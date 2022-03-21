@@ -1,30 +1,27 @@
-import React, { Component } from 'react'
-import { Redirect } from 'react-router'
-import {
-  TextField,
-  Button,
-  Container
-} from '@material-ui/core'
+import React, { Component } from "react";
+import { Redirect } from "react-router";
+import { TextField, Button, Container } from "@material-ui/core";
 
 class App extends Component {
   state = {
-    username: '',
-    password: ''
-  }
+    username: "",
+    password: "",
+  };
 
   handleTextChange = (e) => {
-    const state = { ...this.state }
-    state[e.target.name] = e.target.value
-    this.setState(state)
-  }
+    const state = { ...this.state };
+    state[e.target.name] = e.target.value;
+    this.setState(state);
+  };
 
   login = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     // set cookie here
     // set loggedIn = true and max-age = 60*1000 (one minute)
+    document.cookie = "loggedIn=true;max-age=60*1000";
 
-    window.location.replace("/")
-  }
+    window.location.replace("/");
+  };
 
   render() {
     return (
@@ -37,19 +34,24 @@ class App extends Component {
               value={this.state.username}
               name="username"
               label="Username"
-              type="text" />
+              type="text"
+            />
             <TextField
               required
               onChange={this.handleTextChange}
               value={this.state.password}
               name="password"
               label="Password"
-              type="password" />
+              type="password"
+            />
             <Button
               type="submit"
               className="login-button"
               variant="contained"
-              color="primary">Login</Button>
+              color="primary"
+            >
+              Login
+            </Button>
           </form>
         </Container>
       </div>
